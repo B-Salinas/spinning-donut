@@ -1,21 +1,54 @@
-# later: summary of what's happening / what's about to happen in the code
+# SUMMARY OF WHAT'S HAPPENING
 
-# Preparing Pygame window
 import pygame
 
 pygame.init()
 
-#  -- 2 colors
-# donut
-white = (255, 255, 255)
-# background
-black = (0, 0, 0)
+# 2 colors
+white = (255, 255, 255)  # donut
+black = (0, 0, 0)  # background
 
-# -- setting pygame window size
+# setting pygame window size
 WIDTH = 1920
 HEIGHT = 1080
 
-# -- screen for pygame window, size of screen
+# ----------------------------------------------------------------------------------------------------------------
+
+# D O N U T _ S E T U P
+
+x_start, y_start = 0, 0  # left top corner starting position
+
+# space between chars
+x_separator = 10
+y_separator = 20
+
+# rows, columns, and screen size
+rows = HEIGHT // y_separator
+columns = WIDTH // x_separator
+screen_size = rows * columns
+
+
+# D O N U T _ C R E A T I O N
+
+# drawing donut in middle of the screen
+x_offset = columns / 2
+y_offset = rows / 2
+
+# rotation animation
+A, B = 0, 0
+
+# creating donut white
+theta_spacing = 10  # density of primary cirle
+phi_spacing = 1  # donut density amonst primary circle 360°
+
+# chars for illuminate index
+chars = ".,-~:;=!*#$@"
+
+# ---------------------------------------------------------------------------------------------------------------
+
+# R E N D E R I N G
+
+# screen for pygame window, size of screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -25,17 +58,22 @@ display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
 
-# -- pygame is run in a while loop
+# ---------------------------------------------------------------------------------------------------------------
+
+# R U N N I N G
+
+# pygame runs in a while loop
 run = True
 while run:
 
+    # start
     screen.fill(black)
 
-    # spinning donut code goes here
+    ### SPINNING DONUT CODE GOES HERE ###
 
     pygame.display.update()
 
-    # -- close button
+    # close button
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run == False
