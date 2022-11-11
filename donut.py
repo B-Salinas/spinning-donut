@@ -118,7 +118,7 @@ while run:
     for i in range(len(b)):
         A += 0.000002
         B += 0.000001
-        if i = 0 or i % columns:
+        if i == 0 or i % columns:
             text_display(b[i], x_start, y_start)
             x_start += x_separator
         else:
