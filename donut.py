@@ -58,6 +58,8 @@ display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
 
+# displays pygame text
+
 
 def text_display(letter, x_space, y_space):
     """
@@ -81,6 +83,49 @@ while run:
     screen.fill(black)
 
     # spinning donut
+    z = [0] * screen_size  # fills donut space
+    b = [' '] * screen_size  # fills background/'empty' space
+
+    for j in range(0, 628, theta_spacing):  # from 0 to 2π (full circle)
+        for i in range(0, 628, phi_spacing):  # also from 0 to 2π (full circle)
+            c = math.sin(i)
+            d = math.cos(j)
+            e = math.sin(A)
+            f = math.sin(j)
+            g = math.cos(A)
+            h = d + 2
+            D = 1 / (c * h * e + f * g + 5)
+            l = math.cos(i)
+            m = math.cos(B)
+            n = math.sin(B)
+
+            t = c * h * g - f * e
+            # 3D x coordinate after rotation
+            x = int(x_offset + 40 * D * (1 * h * m - t * n))
+            # 3D y coordinate after rotation
+            y = int(y_offset + 20 * D * (1 * h * n + t * m))
+            o = int(x + columns * y)  # 3D z coordinate after rotation
+            N = int(8 * ((f * e - c * d * g) * m - c * d * e -
+                    f * g - l * d * n))  # luminance index w chars
+
+            if rows > y and y > 0 and x > 0 and columns > x and D > z[o]:
+                z[o] = D
+                b[o] = chars[N if N > 0 else 0]
+
+    if y_start == rows * y_separator - y_separator:
+        y_start = 0
+
+    for i in range(len(b)):
+        A += 0.000002
+        B += 0.000001
+        if i = 0 or i % columns:
+            text_display(b[i], x_start, y_start)
+            x_start += x_separator
+        else:
+            y_start += y_separator
+            x_start = 0
+            text_display(b[i], x_start, y_start)
+            x_start += x_separator
 
     pygame.display.update()
 
