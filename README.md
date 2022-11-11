@@ -12,6 +12,8 @@ spinning donut using Python with Pygame. this project is purely inspired by joma
 4. select `Run Python File in Terminal`
 5. Enjoy the ride 🍩
 
+![Spinning Donut Gif](/spinning-donut.gif)
+
 ## references
 
 - [Python/Pygame 3D ASCII Spinning Donut Tutorial](https://www.youtube.com/watch?v=zn4Yvxww58g)
