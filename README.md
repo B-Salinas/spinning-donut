@@ -4,6 +4,10 @@
 
 spinning donut using Python with Pygame. this project is purely inspired by joma tema's [video](https://www.youtube.com/watch?v=sW9npZVpiMI) and merges my love of math, art, and code
 
+<p align="center">
+  <img src="spinning-donut.gif" alt="Spinning Donut Gif">
+</p>
+
 ## how to spin the donut
 
 1. clone/fork repo or download as .zip
@@ -11,10 +15,6 @@ spinning donut using Python with Pygame. this project is purely inspired by joma
 3. right click while in `donut.py` file
 4. select `Run Python File in Terminal`
 5. Enjoy the ride 🍩
-
-<p align="center">
-  <img src="spinning-donut.gif" alt="Spinning Donut Gif">
-</p>
 
 ## references
 
