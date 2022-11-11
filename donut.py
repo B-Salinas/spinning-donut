@@ -52,15 +52,13 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # or if you choose to use fullscreen -- uncomment to use
-# display_surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN);
+# display_surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 
 # caption and font
 pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
 
 # displays pygame text
-
-
 def text_display(letter, x_space, y_space):
     """
     This is a display function
@@ -69,7 +67,6 @@ def text_display(letter, x_space, y_space):
     text = font.render(str(letter), True, white)
     # bleed text on pygame surface
     display_surface.blit(text, (x_start, y_start))
-
 
 # ---------------------------------------------------------------------------------------------------------------
 
