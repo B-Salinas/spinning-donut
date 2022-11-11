@@ -4,13 +4,13 @@ import pygame
 
 pygame.init()
 
-# 2 colors
+# 3 colors
 white = (255, 255, 255)  # donut
 black = (0, 0, 0)  # background
 
 # setting pygame window size
-WIDTH = 1920
-HEIGHT = 1080
+WIDTH = 1080
+HEIGHT = 720
 
 # ----------------------------------------------------------------------------------------------------------------
 
@@ -43,6 +43,7 @@ phi_spacing = 1  # donut density amonst primary circle 360°
 # chars for illuminate index
 chars = ".,-~:;=!*#$@"
 
+
 # ---------------------------------------------------------------------------------------------------------------
 
 # R E N D E R I N G
@@ -59,6 +60,8 @@ pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
 
 # displays pygame text
+
+
 def text_display(letter, x_space, y_space):
     """
     This is a display function
@@ -71,6 +74,7 @@ def text_display(letter, x_space, y_space):
 # ---------------------------------------------------------------------------------------------------------------
 
 # R U N N I N G
+
 
 # pygame runs in a while loop
 run = True
@@ -97,10 +101,11 @@ while run:
             n = math.sin(B)
 
             t = c * h * g - f * e
+
             # 3D x coordinate after rotation
-            x = int(x_offset + 40 * D * (1 * h * m - t * n))
+            x = int(x_offset + 40 * D * (l * h * m - t * n))
             # 3D y coordinate after rotation
-            y = int(y_offset + 20 * D * (1 * h * n + t * m))
+            y = int(y_offset + 20 * D * (l * h * n + t * m))
             o = int(x + columns * y)  # 3D z coordinate after rotation
             N = int(8 * ((f * e - c * d * g) * m - c * d * e -
                     f * g - l * d * n))  # luminance index w chars
@@ -113,8 +118,8 @@ while run:
         y_start = 0
 
     for i in range(len(b)):
-        A += 0.000002
-        B += 0.000001
+        A += 0.00004  # for faster rotation, change to larger value
+        B += 0.00002  # for faster rotation, change to larger value
         if i == 0 or i % columns:
             text_display(b[i], x_start, y_start)
             x_start += x_separator
@@ -130,3 +135,6 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run == False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                run = False
