@@ -12,7 +12,9 @@ spinning donut using Python with Pygame. this project is purely inspired by joma
 4. select `Run Python File in Terminal`
 5. Enjoy the ride 🍩
 
-![Spinning Donut Gif](/spinning-donut.gif)
+<p align="center">
+  <img src="spinning-donut.gif" alt="Spinning Donut Gif" width="500" height="250">
+</p>
 
 ## references
 
