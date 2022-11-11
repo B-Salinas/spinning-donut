@@ -42,6 +42,7 @@ phi_spacing = 1  # donut density amonst primary circle 360°
 
 # chars for illuminate index
 chars = ".,-~:;=!*#$@"
+# inverted_chars = "@$#*!=;:~-,."
 
 
 # ---------------------------------------------------------------------------------------------------------------
