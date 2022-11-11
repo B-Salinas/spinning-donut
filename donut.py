@@ -1,5 +1,5 @@
 # SUMMARY OF WHAT'S HAPPENING
-
+import math
 import pygame
 
 pygame.init()
@@ -26,7 +26,6 @@ y_separator = 20
 rows = HEIGHT // y_separator
 columns = WIDTH // x_separator
 screen_size = rows * columns
-
 
 # D O N U T _ C R E A T I O N
 
@@ -55,8 +54,20 @@ display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 # or if you choose to use fullscreen -- uncomment to use
 # display_surface = pygame.display.set_mode((0, 0), pygame.FULLSCREEN);
 
+# caption and font
 pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
+
+
+def text_display(letter, x_space, y_space):
+    """
+    This is a display function
+    need parameters for characters and coordinates on screen
+    """
+    text = font.render(str(letter), True, white)
+    # bleed text on pygame surface
+    display_surface.blit(text, (x_start, y_start))
+
 
 # ---------------------------------------------------------------------------------------------------------------
 
@@ -69,7 +80,7 @@ while run:
     # start
     screen.fill(black)
 
-    ### SPINNING DONUT CODE GOES HERE ###
+    # spinning donut
 
     pygame.display.update()
 
