@@ -8,7 +8,7 @@ pygame.init()
 # 3 colors
 white = (255, 255, 255)  # donut
 black = (0, 0, 0)  # background
-hue = 0
+hue = 1
 
 # setting pygame window size
 WIDTH = 1080
@@ -76,7 +76,7 @@ def text_display(letter, x_space, y_space):
     need parameters for characters and coordinates on screen
     """
     # text = font.render(str(letter), True, white) # black and white
-    text = font.render(str(letter), True, hsv2rgb(hue, 1, 1))  # color
+    text = font.render(str(letter), True, hsv2rgb(hue, 0, 1))  # color
     # bleed text on pygame surface
     display_surface.blit(text, (x_start, y_start))
 
@@ -127,8 +127,8 @@ while run:
         y_start = 0
 
     for i in range(len(b)):
-        A += 0.0003  # for faster rotation, change to larger value
-        B += 0.0002  # for faster rotation, change to larger value
+        A += 0.00003  # for faster rotation, change to larger value
+        B += 0.00002  # for faster rotation, change to larger value
         if i == 0 or i % columns:
             text_display(b[i], x_start, y_start)
             x_start += x_separator
