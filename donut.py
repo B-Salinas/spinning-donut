@@ -1,12 +1,14 @@
 # SUMMARY OF WHAT'S HAPPENING
 import math
 import pygame
+import colorsys
 
 pygame.init()
 
 # 3 colors
 white = (255, 255, 255)  # donut
 black = (0, 0, 0)  # background
+hue = 0
 
 # setting pygame window size
 WIDTH = 1080
@@ -38,7 +40,8 @@ A, B = 0, 0
 
 # creating donut white
 theta_spacing = 10  # density of primary cirle
-phi_spacing = 1  # donut density amonst primary circle 360°
+# donut density amonst primary circle 360° (for faster rotation, change to 2 or 3)
+phi_spacing = 1
 
 # chars for illuminate index
 chars = ".,-~:;=!*#$@"
@@ -60,6 +63,10 @@ display_surface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Spinning Donut')
 font = pygame.font.SysFont('Inter', 18, bold=True)
 
+
+def hsv2rgb(h, s, v):
+    return tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h, s, v))
+
 # displays pygame text
 
 
@@ -68,7 +75,8 @@ def text_display(letter, x_space, y_space):
     This is a display function
     need parameters for characters and coordinates on screen
     """
-    text = font.render(str(letter), True, white)
+    # text = font.render(str(letter), True, white) # black and white
+    text = font.render(str(letter), True, hsv2rgb(hue, 1, 1))  # color
     # bleed text on pygame surface
     display_surface.blit(text, (x_start, y_start))
 
@@ -119,8 +127,8 @@ while run:
         y_start = 0
 
     for i in range(len(b)):
-        A += 0.00004  # for faster rotation, change to larger value
-        B += 0.00002  # for faster rotation, change to larger value
+        A += 0.0003  # for faster rotation, change to larger value
+        B += 0.0002  # for faster rotation, change to larger value
         if i == 0 or i % columns:
             text_display(b[i], x_start, y_start)
             x_start += x_separator
